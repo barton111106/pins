@@ -74,13 +74,17 @@
                     log(pinsCharacteristic );
                     log('=========== READY ===========');
                     //return buttonchar.startNotifications();
+                   return  pinsCharacteristic.readValue();
                 })
-            /*
-                .then(() => {
-                    log('Notifications from button enabled');
-                    buttonchar.addEventListener('characteristicvaluechanged', handleNotifyButton);
-                })
+                .then(leitura => {
+                    let pins = value.getUint8(0);
+                      
+                    //log('Notifications from button enabled');
+                     log(pins);
+                   //buttonchar.addEventListener('characteristicvaluechanged', handleNotifyButton);
                 
+                })
+                /*
                 .then(() => {
                     log('=========== READY ===========');
                 })
