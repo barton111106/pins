@@ -77,7 +77,7 @@
                    return  pinsCharacteristic.readValue();
                 })
                 .then(leitura => {
-                    let pins = value.getUint8(0);
+                    let pins = leitura.getUint8(0);
                       
                     //log('Notifications from button enabled');
                      log(pins);
