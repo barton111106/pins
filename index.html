@@ -20,7 +20,7 @@
         const uiServicesUUID = 'ef680300-9b35-4933-9b10-52ffa9740042';
         const buttonChaUUID  = 'ef680302-9b35-4933-9b10-52ffa9740042';
         const ledCharacteristicUUID = 'ef680301-9b35-4933-9b10-52ffa9740042';
-        const pinscharact = 'ef680303-9b35-4933-9b10-52ffa9740042';
+        const pinsCharact = 'ef680303-9b35-4933-9b10-52ffa9740042';
         var bleDevice;
         var bleServer;
         var uiService;
@@ -63,20 +63,28 @@
                 .then(service => {
                     log('Found UI service', service);
                     uiService = service;
-                    return uiService.getCharacteristic(buttonChaUUID);
+                    //return uiService.getCharacteristic(buttonChaUUID);
+                    return uiService.getCharacteristic(pinsCharact);
                 })
                 .then(characteristic => {
-                    log('Found button characteristic');
-                    buttonchar = characteristic;
+                   // log('Found button characteristic');
+                    log('Found pins characteristic');
+                    //buttonchar = characteristic;
+                    pinsCharacteristic = characteristic;
+                    log(pinsCharacteristic );
+                    log('=========== READY ===========');
                     return buttonchar.startNotifications();
+                /*
                 })
                 .then(() => {
                     log('Notifications from button enabled');
                     buttonchar.addEventListener('characteristicvaluechanged', handleNotifyButton);
                 })
+                
                 .then(() => {
                     log('=========== READY ===========');
                 })
+                */
                 .catch(error => {
                     console.log('Connection Error: ' + error);
                 });
